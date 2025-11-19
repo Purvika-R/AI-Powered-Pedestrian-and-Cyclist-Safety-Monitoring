@@ -1,0 +1,1 @@
+NOTE: The PPTX at /mnt/data/AI-Powered-Pedestrian-and-Cyclist-Safety-Monitoring.pptx was used as the authoritative spec. Where relevant (Real-time Inference, Risk Detection Rules, Dashboard & Alerts), section names and phrasing are adopted in APIs and README.
