@@ -1,0 +1,60 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: safety
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+      - ./models:/app/models
+      - ./storage:/app/storage
+    depends_on:
+      - db
+      - redis
+      - rabbitmq
+    ports:
+      - "8000:8000"
+
+  worker:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: ["bash", "-lc", "celery -A app.worker.celery_app worker --loglevel=info"]
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+      - ./models:/app/models
+      - ./storage:/app/storage
+    depends_on:
+      - backend
+      - rabbitmq
+      - redis
+      - db
+
+volumes:
+  db_data:
