@@ -1,0 +1,1 @@
+Sample files directory for tests. Images and short video can be placed here for demo ingestion.
