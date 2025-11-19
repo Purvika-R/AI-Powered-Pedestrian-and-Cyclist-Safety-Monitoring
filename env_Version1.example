@@ -1,0 +1,22 @@
+# Postgres
+DATABASE_URL=postgresql+psycopg2://postgres:postgres@db:5432/safety_monitoring
+
+# Redis
+REDIS_URL=redis://redis:6379/0
+
+# RabbitMQ (Celery broker)
+RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672//
+
+# JWT
+JWT_SECRET=changemeverywhere
+JWT_ALGORITHM=HS256
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=adminpass
+
+# Model & storage
+MODEL_DIR=/app/models
+MEDIA_DIR=/app/storage
+
+# App
+APP_HOST=0.0.0.0
+APP_PORT=8000
