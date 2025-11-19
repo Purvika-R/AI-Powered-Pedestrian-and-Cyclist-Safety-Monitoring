@@ -1,0 +1,1 @@
+- This project is a demo-quality backend. For production use harden secrets, enable SSL, replace local storage with S3, and scale Celery workers.
