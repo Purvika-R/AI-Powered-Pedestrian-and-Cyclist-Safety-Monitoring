@@ -1,0 +1,35 @@
+# Local development environment variables for AI Pedestrian & Cyclist Safety backend
+# WARNING: Do NOT commit sensitive secrets to a public repository. Prefer using GitHub Secrets
+# or create this file in a private repository. The values below are safe placeholders for a
+# local/dev/demo environment — replace the SECRET and ADMIN_PASSWORD with secure values.
+
+# Database (Docker Compose default)
+DATABASE_URL=postgresql+psycopg2://postgres:postgres@db:5432/safety_monitoring
+
+# Redis (cache / pubsub)
+REDIS_URL=redis://redis:6379/0
+
+# RabbitMQ (Celery broker)
+RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672//
+
+# JWT auth (REPLACE with a strong secret before deploying)
+JWT_SECRET=REPLACE_ME_GENERATE_A_SECURE_SECRET
+JWT_ALGORITHM=HS256
+
+# Admin user for local dev (change immediately)
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=REPLACE_ME_CHANGE_ADMIN_PASSWORD
+
+# Model & storage paths (inside container); adjust if running locally without Docker
+MODEL_DIR=/app/models
+MEDIA_DIR=/app/storage
+
+# App binding
+APP_HOST=0.0.0.0
+APP_PORT=8000
+
+# YOLO/inference settings (used by the ultralytics main.py example)
+YOLO_MODEL_PATH=yolov8n.pt
+IMG_SIZE=640
+CONF_THRESHOLD=0.25
+MAX_VIDEO_FRAMES=200
