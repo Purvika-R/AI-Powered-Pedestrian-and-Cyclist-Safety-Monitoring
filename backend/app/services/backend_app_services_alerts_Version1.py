@@ -3,7 +3,8 @@ from typing import Any
 import json
 import redis
 # use absolute import so Pylance can resolve it reliably
-from backend.app.config import settings
+from backend.app.backend_app_config_Version1 import settings
+
 
 # Redis client (decode_responses so published payloads are str)
 r = redis.from_url(settings.REDIS_URL, decode_responses=True)

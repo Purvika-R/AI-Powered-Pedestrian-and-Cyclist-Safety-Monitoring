@@ -1,6 +1,6 @@
 from typing import List, Dict, Any
 # use absolute import so Pylance can resolve it reliably
-from backend.app.services.alerts import push_alert
+from backend.app.services.backend_app_services_alerts_Version1 import push_alert
 from sqlalchemy.orm import Session
 import math
 
